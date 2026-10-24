@@ -1,5 +1,6 @@
-package com.example.financeapp
+package com.example.financeapp.legacy
 
+import com.example.financeapp.R
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
