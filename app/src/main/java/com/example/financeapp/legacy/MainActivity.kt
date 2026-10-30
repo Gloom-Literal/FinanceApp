@@ -1,6 +1,5 @@
 package com.example.financeapp.legacy
 
-import com.example.financeapp.R
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -26,8 +25,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.financeapp.R
+import com.example.financeapp.TransactionScreen
 
-private const val TRANSACTION_COUNT = 100
+private const val AMOUNT: Int = 500
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             FinanceAppTheme {
-                FinanceAppScreen()
+                TransactionScreen()
             }
         }
     }
@@ -70,19 +71,25 @@ private fun FinanceAppScreen() {
             Text(
                 text = stringResource(
                     R.string.balance_summary,
-                    state.balanceValue,
-                    state.counter,
+                    state.balance,
+                    state.count,
                 ),
                 style = MaterialTheme.typography.headlineSmall,
             )
             Button(onClick = {
-                val transaction = Transaction(TRANSACTION_COUNT, TransactionType.DEPOSIT)
+                val transaction = Transaction(
+                    AMOUNT,
+                    TransactionType.DEPOSIT,
+                )
                 state = reduce(state, MainUiEvent.AddTransaction(transaction))
             }) {
                 Text(text = stringResource(R.string.add_income_button))
             }
             Button(onClick = {
-                val transaction = Transaction(TRANSACTION_COUNT, TransactionType.WITHDRAW)
+                val transaction = Transaction(
+                    AMOUNT,
+                    TransactionType.WITHDRAW,
+                )
                 state = reduce(state, MainUiEvent.AddTransaction(transaction))
             }) {
                 Text(text = stringResource(R.string.add_expense_button))

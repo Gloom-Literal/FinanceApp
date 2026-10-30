@@ -15,5 +15,7 @@
     <string name="transaction_history">История транзакций</string>
     <string name="transaction_invalid_input">Введите описание и сумму больше нуля</string>
     <string name="transaction_amount_too_large">Сумма слишком велика</string>
+    <string name="transaction_history_income">+%1$s — %2$s</string>
+    <string name="transaction_history_expense">-%1$s — %2$s</string>
 
 </resources>
